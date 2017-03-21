@@ -1,0 +1,14 @@
+{
+  "generator-jhipster": {
+    "appsFolders": [
+      "blog",
+      "store"
+    ],
+    "directoryPath": "../",
+    "clusteredDbApps": [],
+    "monitoring": "elk",
+    "serviceDiscoveryType": "eureka",
+    "adminPassword": "admin",
+    "jwtSecretKey": "f44c84e52493070ae30667c00a5a978585b51a1d"
+  }
+}
