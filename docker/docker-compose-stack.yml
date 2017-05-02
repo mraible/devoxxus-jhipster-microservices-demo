@@ -8,7 +8,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://blog-postgresql:5432/blog
       SPRING_DATA_CASSANDRA_CONTACTPOINTS: blog-cassandra
       SPRING_PROFILES_ACTIVE: prod,swagger
-    image: blog
+    image: mraible/blog:latest
     ports:
     - 8080:8080
   blog-postgresql:
@@ -51,7 +51,7 @@ services:
       SPRING_DATA_MONGODB_DATABASE: store
       SPRING_DATA_MONGODB_URI: mongodb://store-mongodb:27017
       SPRING_PROFILES_ACTIVE: prod,swagger
-    image: store
+    image: mraible/store:latest
   store-mongodb:
     image: mongo:3.2.10
 version: '3.0'
