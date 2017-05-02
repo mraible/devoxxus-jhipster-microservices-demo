@@ -1,4 +1,5 @@
-networks: {}
+version: "3.0"
+
 services:
   blog-app:
     environment:
@@ -10,12 +11,14 @@ services:
       SPRING_PROFILES_ACTIVE: prod,swagger
     image: mraible/blog:latest
     ports:
-    - 8080:8080
+    - 8080:80
   blog-postgresql:
     environment:
       POSTGRES_PASSWORD: ''
       POSTGRES_USER: blog
     image: postgres:9.5.4
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
   jhipster-console:
     image: jhipster/jhipster-console:v1.3.2
     ports:
@@ -42,7 +45,7 @@ services:
     ports:
     - 8761:8761
     volumes:
-    - /Users/mraible/dev/jhipster/devoxxus-jhipster-microservices-demo/docker/central-server-config:/central-config:rw
+    - registry-config:/var/lib/registry/central-server-config:/central-config:rw
   store-app:
     environment:
       JHIPSTER_REGISTRY_PASSWORD: admin
@@ -54,6 +57,17 @@ services:
     image: mraible/store:latest
   store-mongodb:
     image: mongo:3.2.10
-version: '3.0'
-volumes: {}
-
+    volumes:
+      - mongo-data:/var/lib/mongodb/data
+  visualizer:
+    image: dockersamples/visualizer:stable
+    ports:
+      - "8081:8081"
+    stop_grace_period: 1m30s
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+	
+volumes:
+  postgres-data:
+  mongo-data:
+  registry-config:
