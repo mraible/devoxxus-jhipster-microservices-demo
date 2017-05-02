@@ -1,0 +1,34 @@
+version: '2'
+services:
+    lb:
+        # load balancer container
+        scale: 1
+        load_balancer_config:
+          name: lb config
+        health_check:
+          port: 42
+          interval: 2000
+          unhealthy_threshold: 3
+          healthy_threshold: 2
+          response_timeout: 2000
+    blog-app:
+        scale: 1
+    blog-postgresql:
+        scale: 1
+    
+    store-app:
+        scale: 1
+    store-mongodb:
+        scale: 1
+    
+
+    jhipster-registry:
+        scale: 1
+
+
+    jhipster-elasticsearch:
+        scale: 1
+    jhipster-logstash:
+        scale: 1
+    jhipster-console:
+        scale: 1
